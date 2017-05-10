@@ -1,11 +1,12 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import pygame, sys, random, time
 from pygame.locals import *
 
 pygame.init()
 DISPLAYSURF = pygame.display.set_mode((960, 720))
-pygame.display.set_caption('Hello World!')
+pygame.display.set_caption('快乐小鸡')
 
 WHITE = (0, 0, 255)
 DISPLAYSURF.fill(WHITE)
