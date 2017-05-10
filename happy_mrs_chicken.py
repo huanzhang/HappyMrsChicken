@@ -13,9 +13,12 @@ DISPLAYSURF.fill(WHITE)
 backdrop = pygame.image.load('backdrop.png')
 
 chickens = [pygame.image.load('hmc.png'), pygame.image.load('hmc2.png')]
+egg = pygame.image.load('egg.png')
 chicken_position = (random.randint(0, 960-157), random.randint(0, 720-195))
 chicken_number = 0
 IMAGE_TIME = 20
+
+egg_positions = []
 
 clock = pygame.time.Clock()
 while True: # main game loop
@@ -26,6 +29,7 @@ while True: # main game loop
             sys.exit()
         elif event.type == KEYUP:
             if event.key == K_SPACE:
+                egg_positions.append(chicken_position)
                 chicken_position = (random.randint(0, 960-157), random.randint(0, 720-195))
 
     if IMAGE_TIME > 0:
@@ -35,7 +39,10 @@ while True: # main game loop
         chicken_number ^= 1
 
     DISPLAYSURF.blit(backdrop, (0, 0))
-    DISPLAYSURF.blit(chickens[chicken_number], chicken_position)
 
+    for p in egg_positions:
+        DISPLAYSURF.blit(egg, p)
+
+    DISPLAYSURF.blit(chickens[chicken_number], chicken_position)
 
     pygame.display.update()
