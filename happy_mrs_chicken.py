@@ -20,6 +20,8 @@ IMAGE_TIME = 20
 
 egg_positions = []
 
+meow = pygame.mixer.Sound('meow.wav')
+
 clock = pygame.time.Clock()
 while True: # main game loop
     clock.tick(60)
@@ -31,6 +33,7 @@ while True: # main game loop
             if event.key == K_SPACE:
                 egg_positions.append(chicken_position)
                 chicken_position = (random.randint(0, 960-157), random.randint(0, 720-195))
+                meow.play()
 
     if IMAGE_TIME > 0:
         IMAGE_TIME -= 1
@@ -44,5 +47,9 @@ while True: # main game loop
         DISPLAYSURF.blit(egg, p)
 
     DISPLAYSURF.blit(chickens[chicken_number], chicken_position)
+
+    font = pygame.font.Font(None, 100)
+    count_text = font.render(str(len(egg_positions)), 1, WHITE)
+    DISPLAYSURF.blit(count_text, (19,19))
 
     pygame.display.update()
